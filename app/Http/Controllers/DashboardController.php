@@ -18,7 +18,7 @@ class DashboardController extends Controller
             'email' => 'email:rfc,dns' //RFCs are specifications that define the basic protocol for Internet electronic mail transport.
         ]);
 
-        $link = 'http://127.0.0.1:8000/mobile-number-verification'; // Replace with your actual link
+        $link = env('APP_URL') . '/mobile-number-verification';
         $email = $request->input('email');
 
         \Mail::to($email)->send(new WelcomeEmail($link));
