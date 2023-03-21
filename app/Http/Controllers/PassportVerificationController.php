@@ -56,16 +56,14 @@ class PassportVerificationController extends Controller
                 $companionData = $this->prepareComapionData($companionData);
 
                 $companionUser = $this->userRepository->createUser($companionData);
+
+                $this->userCompanionRepository->create($userId, $companionUser->id);
+
                 $this->storeVisaDocument($companionUser->id, 'personal_picture', $validatedData['personal_picture']);
                 $this->storeVisaDocument($companionUser->id, 'passport_picture', $validatedData['passport_picture']);
-
             }
 
-            if ($companionUser) {
-                $this->userCompanionRepository->create($userId, $companionUser->id);
-            }
-
-
+            return redirect()->back()->with('success', 'Data entered successfully!');
         } catch (\Exception $e) {
             \Log::debug($e->getMessage());
         }
