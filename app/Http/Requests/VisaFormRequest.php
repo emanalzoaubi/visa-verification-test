@@ -23,8 +23,8 @@ class VisaFormRequest extends FormRequest
     {
         $rules = [
             'user_id' => 'required',
-            'first_name' => 'required|regex:/^[a-zA-Z]+$/',
-            'last_name' => 'required|regex:/^[a-zA-Z]+$/',
+            'first_name' => 'required|regex:/^[a-zA-Z ]+$/',
+            'last_name' => 'required|regex:/^[a-zA-Z ]+$/',
             'gender' => 'required',
             'place_of_birth' => 'required',
             'country_of_residency' => 'required',
